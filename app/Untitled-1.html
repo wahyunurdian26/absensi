@@ -1,0 +1,85 @@
+<!-- Modal -->
+<div class="modal fade" id="tambah">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Tambah Data Karyawan</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="../../public/karyawan/simpan.php" method="post">
+                                                            
+                                                            <div class="form-group">
+                                                                <label>Jabatan</label>
+                                                                <select class="select2" id="select2insidemodal1" name="id_jabatan" required>
+                                                                    <option value="">Pilih</option>
+                                                                    <?php
+                                                                    $cek_jabatan = mysqli_query($this->koneksi->link, "SELECT *FROM jabatan ORDER BY nama_jabatan ASC");
+                                                                    while ($row_jabatan = mysqli_fetch_array($cek_jabatan)) {
+                                                                    ?>
+                                                                        <option value="<?= $row_jabatan['id_jabatan'] ?>"><?= $row_jabatan['nama_jabatan']; ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Mata Pelajaran</label>
+                                                                <select class="select2" multiple="multiple" data-placeholder="pilih" style="width: 100%;" name="nama_pelajaran[]" required>
+                                                                    <option value="">Pilih</option>
+                                                                    <?php
+                                                                    $cek_mata_pelajaran = mysqli_query($this->koneksi->link, "SELECT *FROM pelajaran ORDER BY nama_pelajaran ASC");
+                                                                    while ($row_mata_pelajaran = mysqli_fetch_array($cek_mata_pelajaran)) {
+                                                                    ?>
+                                                                        <option value="<?= $row_mata_pelajaran['nama_pelajaran'] ?>"><?= $row_mata_pelajaran['nama_pelajaran']; ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
+
+
+                                                            <div class="form-group">
+                                                                <label>Pendidikan Terakhir/Jurusan</label>
+                                                                <select class="select2" id="select2insidemodal3" name="id_jurusan" required>
+                                                                    <option value="">Pilih</option>
+                                                                    <?php
+                                                                    $cek_jurusan = mysqli_query($this->koneksi->link, "SELECT *FROM jurusan ORDER BY nama_jurusan ASC");
+                                                                    while ($row_jurusan = mysqli_fetch_array($cek_jurusan)) {
+                                                                    ?>
+                                                                        <option value="<?= $row_jurusan['id_jurusan'] ?>"><?= $row_jurusan['nama_jurusan']; ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Induk</label>
+                                                                <select class="form-control" name="induk" required>
+                                                                    <option value="">Pilih</option>
+                                                                    <option value="Ya">Ya</option>
+                                                                    <option value="Tidak">Tidak</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>TMT</label>
+                                                                <input type="date" class="form-control" name="tmt" placeholder="Terhitung Mulai Tahun" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Password Login</label>
+                                                                <input type="password" class="form-control" name="password" placeholder="Password Login" required>
+                                                            </div>
+                                                            <input type="hidden" class="form-control" name="profile" value="profile-user.png">
+                                                            <!-- /.card-body -->
+                                                            <div class="modal-footer" style="height: 50px;">
+                                                                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <!-- /.Modal -->
